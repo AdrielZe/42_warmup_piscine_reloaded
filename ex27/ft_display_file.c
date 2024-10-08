@@ -6,7 +6,7 @@
 /*   By: asilveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:19:02 by asilveir          #+#    #+#             */
-/*   Updated: 2024/10/08 14:24:06 by asilveir         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:38:07 by asilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -14,7 +14,7 @@
 
 void	display_file(int fd)
 {
-	char	buffer[4096];
+	char	buffer;
 
 	while (read(fd, &buffer, 1) > 0)
 	{
@@ -28,12 +28,12 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		write(1, "File name missing.", 18);
+		write(1, "File name missing.\n", 19);
 		return (1);
 	}
 	if (argc > 2)
 	{
-		write(1, "Too many arguments.", 19);
+		write(1, "Too many arguments.\n", 20);
 		return (1);
 	}
 	if (argc == 2)
@@ -41,7 +41,7 @@ int	main(int argc, char *argv[])
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 		{
-			write(1, "Error opening the file.", 23);
+			write(1, "Error opening the file.\n", 24);
 			return (1);
 		}
 		display_file(fd);
